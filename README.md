@@ -21,7 +21,7 @@ The project is intended for learning and understanding how to structure scalable
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/adilavahab/shadcn-dashboard.git
+git clone https://github.com/adilavahab/ShadCN-Project.git
 cd shadcn-dashboard
 ```
 

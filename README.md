@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧩 SHADCN Dashboard
 
-## Getting Started
+This is a modern admin dashboard built using the latest **Next.js App Router**, **ShadCN UI**, **Tailwind CSS**, and **TypeScript**.  
+The project is intended for learning and understanding how to structure scalable, component-based UIs with ShadCN.
 
-First, run the development server:
+---
+
+## 📦 Tech Stack
+
+- ✅ **Next.js 15 (App Router)**
+- ✅ **TypeScript**
+- ✅ **Tailwind CSS**
+- ✅ **ShadCN UI (Radix + Tailwind)**
+- ✅ **Lucide Icons**
+- ✅ **Chart.js** via `react-chartjs-2`
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/adilavahab/shadcn-dashboard.git
+cd shadcn-dashboard
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+# or
+pnpm install
+```
+
+### 3. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧠 Purpose
 
-## Learn More
+This project is built for:
 
-To learn more about Next.js, take a look at the following resources:
+- Learning how to use **ShadCN UI**
+- Practicing **component-based development**
+- Exploring **Next.js App Router**
+- Understanding **dynamic routes** and **modular UI**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📈 Features
 
-## Deploy on Vercel
+- Clean, responsive layout
+- Reusable UI components
+- Dynamic user profile pages
+- Integrated chart component
+- Styled with Tailwind CSS and Lucide icons
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📤 Deployment
+
+You can deploy this project on:
+
+- [Vercel](https://vercel.com/)
+- [Netlify](https://netlify.com/)
+- [Render](https://render.com/)
+
+---
+
+## 📄 License
+
+This project is open-source and free to use for learning purposes.
+
+---
+
+> Built with 🖤 by combining modern UI libraries and frameworks.

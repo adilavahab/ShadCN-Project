@@ -23,7 +23,7 @@ const CardList = ({ title }: { title: string }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://shadcn-project.onrender.com/api/${filename}`);
+        const res = await fetch(`https://shadcn-project.onrender.com/api/${filename}`);
         const data = await res.json();
         setList(data);
       } catch (error) {

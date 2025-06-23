@@ -24,7 +24,7 @@ const AppLineChart = () => {
   const [chartData, setChartData] = useState<ChartDataItem[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/line-chart-data.json")
+    fetch("http://shadcn-backend.onrender.com/api/line-chart-data.json")
       .then(res => res.json())
       .then(data => setChartData(data))
       .catch(err => console.error("Failed to load line chart data", err));

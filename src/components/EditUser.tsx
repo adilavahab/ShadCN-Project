@@ -53,7 +53,7 @@ const EditUser = () => {
   });
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/user")
+    fetch("http://shadcn-backend.onrender.com/api/user")
       .then((res) => res.json())
       .then((data) => {
         setUserData(data);

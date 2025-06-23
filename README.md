@@ -28,13 +28,13 @@ This project fetches dynamic data from a backend server via API. It includes res
 All components fetch their data dynamically from:
 
 ```
-GET http://localhost:5000/api/:filename
+GET https://shadcn-project.onrender.com/api/:filename
 ```
 
 **Example**:
 
 ```ts
-const res = await fetch("http://localhost:5000/api/bar-chart-data");
+const res = await fetch("https://shadcn-project.onrender.com/api/bar-chart-data");
 const data = await res.json();
 ```
 
@@ -44,14 +44,16 @@ The backend reads and returns JSON from `/backend/data`.
 
 ## 🚀 How to Run
 
-### 1. Start the Backend
+### 1. Start the Backend Locally
 
 ```bash
 cd backend
 node index.js
 ```
 
-Backend runs at: `http://localhost:5000`
+Runs at: `http://localhost:5000`
+
+> Or deploy backend to Render: `https://shadcn-project.onrender.com`
 
 ### 2. Start the Frontend
 
@@ -61,38 +63,40 @@ npm install
 npm run dev
 ```
 
-Frontend runs at: `http://localhost:3000`
+Runs at: `http://localhost:3000`
+
+> Or deploy frontend to Vercel: `https://shad-cn-project-mu.vercel.app`
 
 ---
 
 ## 📌 Features Completed
 
-- Bar, Pie, Area, Line charts (dynamic data)
-- Latest transactions and popular content cards
-- Todo list with checkboxes
-- Editable user form using React Hook Form + Zod
-- Responsive layout and theme toggle
-- All data served via backend API
+- ✅ Bar, Pie, Area, Line charts (fetched dynamically)
+- ✅ Popular content and latest transactions cards
+- ✅ Todo list with checkboxes
+- ✅ Editable user form with Zod + React Hook Form
+- ✅ Fully responsive design with theme switcher
+- ✅ All data served through backend API
 
 ---
 
 ## 🧠 Project Purpose
 
-- Practice full-stack integration (Next.js + Express)
-- Learn API-based data fetching instead of hardcoding
-- Master modular UI with ShadCN components
-- Build reusable, real-world dashboard layouts
+- Practice full-stack development (Next.js + Express)
+- Learn API-based data fetching
+- Understand ShadCN's modular UI architecture
+- Build scalable dashboard interfaces
 
 ---
 
 ## 🔮 Future Scope
 
-- Connect backend to a real database (MongoDB, PostgreSQL, etc.)
-- Add login/authentication (NextAuth or JWT)
-- Deploy frontend (Vercel) and backend (Render, Railway)
-- Add CRUD functionality to user and task modules
-- Enable file uploads and role-based access
+- Connect backend to real database (MongoDB, PostgreSQL, etc.)
+- Add authentication (NextAuth / JWT)
+- Add full CRUD features to charts, users, todos
+- Upload media or images via backend
+- Role-based permissions for admin/user panels
 
 ---
 
-> Built by **Adila Vahab** for learning, and practice.
+> Built with 💻 by **Adila Vahab** for learning and practice.

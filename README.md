@@ -1,85 +1,98 @@
 # 🧩 SHADCN Dashboard
 
-This is a modern admin dashboard built using the latest **Next.js App Router**, **ShadCN UI**, **Tailwind CSS**, and **TypeScript**.  
-The project is intended for learning and understanding how to structure scalable, component-based UIs with ShadCN.
+A modern admin dashboard built using **Next.js**, **Tailwind CSS**, **TypeScript**, **ShadCN UI**, and a custom **Node.js backend**.
+
+This project fetches dynamic data from a backend server via API. It includes responsive UI components, charts, user forms, and lists — all styled with ShadCN components.
 
 ---
 
-## 📦 Tech Stack
+## ⚙️ Tech Stack
 
-- ✅ **Next.js 15 (App Router)**
-- ✅ **TypeScript**
-- ✅ **Tailwind CSS**
-- ✅ **ShadCN UI (Radix + Tailwind)**
-- ✅ **Lucide Icons**
-- ✅ **Chart.js** via `react-chartjs-2`
+- **Frontend**:  
+  - Next.js 15 (App Router)  
+  - Tailwind CSS  
+  - TypeScript  
+  - ShadCN UI  
+  - Recharts  
+
+- **Backend**:  
+  - Node.js  
+  - Express.js  
+  - CORS  
+  - JSON files as API data source  
 
 ---
 
-## 🚀 Getting Started
+## 🔗 Backend Connection
 
-### 1. Clone the repository
+All components fetch their data dynamically from:
 
-```bash
-git clone https://github.com/adilavahab/ShadCN-Project.git
-cd shadcn-dashboard
+```
+GET http://localhost:5000/api/:filename
 ```
 
-### 2. Install dependencies
+**Example**:
+
+```ts
+const res = await fetch("http://localhost:5000/api/bar-chart-data");
+const data = await res.json();
+```
+
+The backend reads and returns JSON from `/backend/data`.
+
+---
+
+## 🚀 How to Run
+
+### 1. Start the Backend
 
 ```bash
+cd backend
+node index.js
+```
+
+Backend runs at: `http://localhost:5000`
+
+### 2. Start the Frontend
+
+```bash
+cd ..
 npm install
-# or
-pnpm install
-```
-
-### 3. Run the development server
-
-```bash
 npm run dev
 ```
 
-Visit `http://localhost:3000` in your browser.
+Frontend runs at: `http://localhost:3000`
 
 ---
 
-## 🧠 Purpose
+## 📌 Features Completed
 
-This project is built for:
-
-- Learning how to use **ShadCN UI**
-- Practicing **component-based development**
-- Exploring **Next.js App Router**
-- Understanding **dynamic routes** and **modular UI**
-
-You can start editing the page by modifying app/page.tsx. The page auto-updates as you edit the file.
+- Bar, Pie, Area, Line charts (dynamic data)
+- Latest transactions and popular content cards
+- Todo list with checkboxes
+- Editable user form using React Hook Form + Zod
+- Responsive layout and theme toggle
+- All data served via backend API
 
 ---
 
-## 📈 Features
+## 🧠 Project Purpose
 
-- Clean, responsive layout
-- Reusable UI components
-- Dynamic user profile pages
-- Integrated chart component
-- Styled with Tailwind CSS and Lucide icons
-
----
-
-## 📤 Deployment
-
-You can deploy this project on:
-
-- [Vercel](https://vercel.com/)
-- [Netlify](https://netlify.com/)
-- [Render](https://render.com/)
+- Practice full-stack integration (Next.js + Express)
+- Learn API-based data fetching instead of hardcoding
+- Master modular UI with ShadCN components
+- Build reusable, real-world dashboard layouts
 
 ---
 
-## 📄 License
+## 🔮 Future Scope
 
-This project is open-source and free to use for learning purposes.
+- Connect backend to a real database (MongoDB, PostgreSQL, etc.)
+- Add login/authentication (NextAuth or JWT)
+- Deploy frontend (Vercel) and backend (Render, Railway)
+- Add CRUD functionality to user and task modules
+- Enable file uploads and role-based access
 
 ---
 
-> Built with 🖤 by combining modern UI libraries and frameworks.
+> Built by **Adila Vahab** for learning, and practice.

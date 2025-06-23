@@ -29,7 +29,7 @@ const AppPieChart = () => {
   const [chartData, setChartData] = useState<PieDataItem[]>([]);
 
   useEffect(() => {
-    fetch("http://shadcn-backend.onrender.com/api/pie-chart-data")
+    fetch("http://shadcn-project.onrender.com/api/pie-chart-data")
       .then((res) => res.json())
       .then((data) => setChartData(data))
       .catch(console.error);

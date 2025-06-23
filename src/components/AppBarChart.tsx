@@ -33,7 +33,7 @@ const AppBarChart = () => {
        const [chartData, setChartData] = useState<ChartDataItem[]>([]);
 
        useEffect(() => {
-       fetch("http://shadcn-backend.onrender.com/api/bar-chart-data")
+       fetch("http://shadcn-project.onrender.com/api/bar-chart-data")
       .then((res) => res.json())
       .then((data) => setChartData(data))
       .catch((err) => console.error("Error fetching bar chart data:", err));

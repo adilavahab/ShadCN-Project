@@ -32,7 +32,7 @@ const AppAreaChart = () => {
   const [chartData, setChartData] = useState<ChartDataItem[]>([]);
 
   useEffect(() => {
-    fetch("http://shadcn-backend.onrender.com/api/area-chart-data.json")
+    fetch("http://shadcn-project.onrender.com/api/area-chart-data.json")
       .then(res => res.json())
       .then(data => setChartData(data))
       .catch(err => console.error("Failed to load area chart data", err));

@@ -28,7 +28,7 @@ const TodoList = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    fetch("http://shadcn-backend.onrender.com/api/todo-list")
+    fetch("http://shadcn-project.onrender.com/api/todo-list")
       .then((res) => res.json())
       .then((data: RawTodoItem[]) => {
         const formatted = data.map((item) => ({

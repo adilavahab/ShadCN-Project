@@ -17,8 +17,8 @@ const CardList = ({ title }: { title: string }) => {
   const [list, setList] = useState<CardItem[]>([]);
   const filename =
     title === "Popular Content"
-      ? "popular-content.json"
-      : "latest-transactions.json";
+      ? "popular-content"
+      : "latest-transactions";
 
   useEffect(() => {
     const fetchData = async () => {

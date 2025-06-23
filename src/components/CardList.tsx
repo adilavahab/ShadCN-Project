@@ -1,11 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { Badge } from "./ui/badge";
 import { Card, CardContent, CardFooter, CardTitle } from "./ui/card";
-
-import latestTransactions from "@/data/latest-transactions.json";
-import popularContent from "@/data/popular-content.json";
 
 type CardItem = {
   id: number;
@@ -16,10 +14,25 @@ type CardItem = {
 };
 
 const CardList = ({ title }: { title: string }) => {
-  const list: CardItem[] =
+  const [list, setList] = useState<CardItem[]>([]);
+  const filename =
     title === "Popular Content"
-      ? (popularContent as CardItem[])
-      : (latestTransactions as CardItem[]);
+      ? "popular-content.json"
+      : "latest-transactions.json";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/api/${filename}`);
+        const data = await res.json();
+        setList(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [filename]);
 
   return (
     <div>

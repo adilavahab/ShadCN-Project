@@ -6,15 +6,15 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-  type ChartConfig,
+  type ChartConfig
 } from "@/components/ui/chart";
-import chartDataRaw from "@/data/area-chart-data.json";
+import { useEffect, useState } from "react";
 import {
   Area,
   AreaChart,
   CartesianGrid,
   XAxis,
-  YAxis,
+  YAxis
 } from "recharts";
 
 interface ChartDataItem {
@@ -23,40 +23,28 @@ interface ChartDataItem {
   mobile: number;
 }
 
-type ChartDataRawType = ChartDataItem[] | { default: ChartDataItem[] };
-
-const chartDataRawTyped = chartDataRaw as ChartDataRawType;
-const chartData: ChartDataItem[] = Array.isArray(chartDataRawTyped)
-  ? chartDataRawTyped
-  : Array.isArray(chartDataRawTyped.default)
-    ? chartDataRawTyped.default
-    : [];
-
-const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "var(--chart-2)",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "var(--chart-1)",
-  },
-} satisfies ChartConfig;
+const chartConfig: ChartConfig = {
+  desktop: { label: "Desktop", color: "var(--chart-2)" },
+  mobile: { label: "Mobile", color: "var(--chart-1)" }
+};
 
 const AppAreaChart = () => {
+  const [chartData, setChartData] = useState<ChartDataItem[]>([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/area-chart-data.json")
+      .then(res => res.json())
+      .then(data => setChartData(data))
+      .catch(err => console.error("Failed to load area chart data", err));
+  }, []);
+
   return (
-    <div className="">
+    <div>
       <h1 className="text-lg font-medium mb-6">Total Visitors</h1>
       <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
         <AreaChart accessibilityLayer data={chartData}>
           <CartesianGrid vertical={false} />
-          <XAxis
-            dataKey="month"
-            tickLine={false}
-            tickMargin={10}
-            axisLine={false}
-            tickFormatter={(value) => value.slice(0, 3)}
-          />
+          <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} tickFormatter={(value) => value.slice(0, 3)} />
           <YAxis tickLine={false} tickMargin={10} axisLine={false} />
           <ChartTooltip content={<ChartTooltipContent />} />
           <ChartLegend content={<ChartLegendContent />} />
@@ -70,22 +58,8 @@ const AppAreaChart = () => {
               <stop offset="95%" stopColor="var(--color-mobile)" stopOpacity={0.1} />
             </linearGradient>
           </defs>
-          <Area
-            dataKey="mobile"
-            type="natural"
-            fill="url(#fillMobile)"
-            fillOpacity={0.4}
-            stroke="var(--color-mobile)"
-            stackId="a"
-          />
-          <Area
-            dataKey="desktop"
-            type="natural"
-            fill="url(#fillDesktop)"
-            fillOpacity={0.4}
-            stroke="var(--color-desktop)"
-            stackId="a"
-          />
+          <Area dataKey="mobile" type="natural" fill="url(#fillMobile)" stroke="var(--color-mobile)" stackId="a" />
+          <Area dataKey="desktop" type="natural" fill="url(#fillDesktop)" stroke="var(--color-desktop)" stackId="a" />
         </AreaChart>
       </ChartContainer>
     </div>

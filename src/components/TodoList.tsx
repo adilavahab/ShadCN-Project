@@ -1,8 +1,8 @@
 "use client";
-import rawTodos from "@/data/todo-list.json";
+
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Calendar } from "./ui/calendar";
 import { Card } from "./ui/card";
@@ -22,15 +22,24 @@ type RawTodoItem = {
   completed: boolean;
 };
 
-const todos: TodoItem[] = (rawTodos as RawTodoItem[]).map((item: RawTodoItem) => ({
-  id: item.id,
-  text: item.label,
-  checked: item.completed,
-}));
-
 const TodoList = () => {
+  const [todos, setTodos] = useState<TodoItem[]>([]);
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/todo-list")
+      .then((res) => res.json())
+      .then((data: RawTodoItem[]) => {
+        const formatted = data.map((item) => ({
+          id: item.id,
+          text: item.label,
+          checked: item.completed,
+        }));
+        setTodos(formatted);
+      })
+      .catch(console.error);
+  }, []);
 
   return (
     <div>
@@ -45,13 +54,16 @@ const TodoList = () => {
         <PopoverContent className="p-0 w-auto">
           <Calendar
             selected={date}
-            onSelect={(date: Date | undefined) => { setDate(date!); setOpen(false); }}
+            onSelect={(date: Date | undefined) => {
+              setDate(date!);
+              setOpen(false);
+            }}
           />
         </PopoverContent>
       </Popover>
       <ScrollArea className="max-h-[400px] mt-4">
         <div className="flex flex-col gap-4">
-          {todos.map((item: TodoItem) => (
+          {todos.map((item) => (
             <Card key={item.id} className="p-4 flex items-center gap-4">
               <Checkbox id={`todo-${item.id}`} checked={item.checked} />
               <label htmlFor={`todo-${item.id}`} className="text-sm text-muted-foreground">

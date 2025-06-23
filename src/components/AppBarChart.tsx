@@ -8,7 +8,8 @@ import {
   ChartTooltipContent,
   type ChartConfig
 } from "@/components/ui/chart";
-import barChartDataRaw from "@/data/bar-chart-data.json";
+
+import { useEffect, useState } from "react";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 interface ChartDataItem {
@@ -16,12 +17,6 @@ interface ChartDataItem {
   desktop: number;
   mobile: number;
 }
-
-const chartData: ChartDataItem[] = Array.isArray(barChartDataRaw)
-  ? barChartDataRaw
-  : (typeof barChartDataRaw === "object" && barChartDataRaw !== null && "default" in barChartDataRaw && Array.isArray((barChartDataRaw as { default: unknown }).default))
-    ? (barChartDataRaw as { default: ChartDataItem[] }).default
-    : [];
 
 const chartConfig: ChartConfig = {
   desktop: {
@@ -34,7 +29,17 @@ const chartConfig: ChartConfig = {
   }
 };
 
-const AppBarChart = () => (
+const AppBarChart = () => {
+       const [chartData, setChartData] = useState<ChartDataItem[]>([]);
+
+       useEffect(() => {
+       fetch("http://localhost:5000/api/bar-chart-data")
+      .then((res) => res.json())
+      .then((data) => setChartData(data))
+      .catch((err) => console.error("Error fetching bar chart data:", err));
+  }, []);
+ 
+  return (
   <div>
     <h1 className="text-lg font-medium mb-6">Total Revenue</h1>
     <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
@@ -56,5 +61,5 @@ const AppBarChart = () => (
     </ChartContainer>
   </div>
 );
-
+};
 export default AppBarChart;
